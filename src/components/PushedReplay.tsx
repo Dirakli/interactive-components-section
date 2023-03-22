@@ -119,11 +119,15 @@ const TextAdded = styled.p<any>`
   font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-size: 16px;
-  width: 530px;
+  width: 293px;
   word-wrap: break-word;
   font-weight: 400;
   line-height: 24px;
-  color: rgba(103, 114, 126, 1);      
+  color: rgba(103, 114, 126, 1);
+  
+  @media (min-width: 1200px) {
+    width: 530px;
+  }
 `
 
 const CommentedDuration = styled.span`

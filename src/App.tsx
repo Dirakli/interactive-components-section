@@ -79,6 +79,10 @@ const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 1200px) {
+    width: 336px;
+  }
 `
 
 const DeleteText = styled.p`
