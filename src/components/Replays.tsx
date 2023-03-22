@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import minus from "/public/assets/icon-plus.svg";
-import plus from "/public/assets/icon-minus.svg";
-import reply from "/public/assets/icon-reply.svg";
+import minus from "/src/assets/icon-plus.svg";
+import plus from "/src/assets/icon-minus.svg";
+import reply from "/src/assets/icon-reply.svg";
 import Data from "../../data.json";
 import { useSelector } from "react-redux";
 import PushedReplay from "./PushedReplay";
