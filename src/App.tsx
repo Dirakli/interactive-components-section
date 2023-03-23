@@ -4,12 +4,15 @@ import Comment from "./components/Comment"
 import Replays from "./components/Replays"
 import Forms from "./components/Forms"
 import { updateFunction } from "./store/handleChange"
+import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { textUpdate, newTextFunction, deleteFunc, updatePersonName } from "./store/handleChange";
+import { textUpdate, newTextFunction, deleteFunc, updatePersonName, SubmitedFunc } from "./store/handleChange";
 
 function App() {
+
   const dispatch = useDispatch();
   const deleteP = useSelector((del: any) => del.name.delete)
+  const submitted = useSelector((sub: any) => sub.name.submitted)
 
   function deleteSubmit() {
     return (
@@ -31,28 +34,39 @@ function App() {
     return dispatch(updateFunction(false))
   }
   return (
-    <WholeScreen style={{opacity: deleteP ? "0.5" : "1"}} onBlur={onblur} >
+
+    <WholeScreen 
+    onBlur={onblur} >
       <GlobalStyles />
-      <WrapperForAutoHeight>
+      <WrapperForAutoHeight  >
         <MainWrapper>
           <Comment />
           <Replays />
           <Forms />
         </MainWrapper>
       </WrapperForAutoHeight>
-      {deleteP ? <DeleteAlert>
-        <DeleteHeading>Delete comment</DeleteHeading>
-        <DeleteText>Are you sure you want to delete this comment? This will remove the comment and can’t be undone.</DeleteText>
-        <ButtonsWrapper>
-          <DelButton onClick={deleteCancel} >NO, CANCEL</DelButton>
-          <DelButton style={{backgroundColor: "rgba(237, 99, 104, 1)"}} onClick={deleteSubmit} >YES, DELETE</DelButton>
-        </ButtonsWrapper>
-      </DeleteAlert> : ""}
+      {deleteP ?
+        <DivBlur className={`dark-overlay ${submitted ? 'show' : ''}`}>
+          <DeleteAlert>
+            <DeleteHeading>Delete comment</DeleteHeading>
+            <DeleteText>Are you sure you want to delete this comment? This will remove the comment and can’t be undone.</DeleteText>
+            <ButtonsWrapper>
+              <DelButton onClick={deleteCancel} >NO, CANCEL</DelButton>
+              <DelButton style={{ backgroundColor: "rgba(237, 99, 104, 1)" }} onClick={deleteSubmit} >YES, DELETE</DelButton>
+            </ButtonsWrapper>
+          </DeleteAlert>
+        </DivBlur>
+        : ""}
     </WholeScreen>
+
 
   )
 }
 
+
+const DivBlur = styled.div`
+  position: absolute;
+`
 const DelButton = styled.button`
   font-size: 20px;
   border: none;
@@ -111,8 +125,10 @@ const DeleteAlert = styled.div`
   align-items: flex-start;
   justify-content: space-around;
   position: absolute;
-  margin-top: 550px;
-  margin-left: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-50% -50%);
   border-radius: 8px;
   background-color: white;
 
@@ -125,7 +141,7 @@ const DeleteAlert = styled.div`
 const MainWrapper = styled.div`
   width: 375px;
   margin-top: 16px;
-  height: 1413px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,7 +150,7 @@ const MainWrapper = styled.div`
   @media (min-width: 1200px) {
     width: 730px;
     margin-top: 64px;
-    height: 896px;
+    height: auto;
     align-items: flex-end;
   }
 `
@@ -215,6 +231,21 @@ textarea {
 button {
   cursor: pointer;
 }
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 9999; 
+  display: none; 
+}
+.dark-overlay.show {
+  display: block; 
+}
+
 `
 
 export default App

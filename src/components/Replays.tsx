@@ -8,7 +8,7 @@ import PushedReplay from "./PushedReplay";
 import { updateFunction, updatePersonName, textUpdate } from "../store/handleChange";
 import { useDispatch } from "react-redux";
 
-function Replays() {
+function Replays(ref: any) {
   const text = useSelector((store: any) => store.name.text)
   const deleteP = useSelector((del: any) => del.name.delete)
 
@@ -44,7 +44,7 @@ function Replays() {
             </ReplayWrapper>
           </CounterReplayWrapper>
         </CommentSectionWrapper>
-        {text && <PushedReplay></PushedReplay>}
+        {text && <PushedReplay  ></PushedReplay>}
       </div>
     </MainWrapper>
   )

@@ -7,7 +7,8 @@ const handleChange = createSlice({
         value: false,
         text: "",
         newText: "",
-        personName: ""
+        personName: "",
+        submitted: false
     },
     reducers: {
         updateFunction(state, action) {
@@ -24,9 +25,12 @@ const handleChange = createSlice({
         },
         deleteFunc(state, action) {
             state.delete = action.payload
+        },
+        SubmitedFunc(state, action) {
+            state.submitted = action.payload
         }
     }
 })
 
-export const {updateFunction, textUpdate, newTextFunction, updatePersonName, deleteFunc} = handleChange.actions;
+export const {updateFunction, textUpdate, newTextFunction, updatePersonName, deleteFunc, SubmitedFunc} = handleChange.actions;
 export default handleChange.reducer;

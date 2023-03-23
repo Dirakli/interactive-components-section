@@ -5,15 +5,20 @@ import Delete from "/assets/icon-delete.svg";
 import minus from "/assets/icon-plus.svg";
 import plus from "/assets/icon-minus.svg";
 import { useDispatch } from "react-redux";
-import { textUpdate, newTextFunction, deleteFunc } from "../store/handleChange";
+import { textUpdate, newTextFunction, deleteFunc, SubmitedFunc } from "../store/handleChange";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 
 function PushedReplay() {
+  
   const dispatch = useDispatch();
   const text = useSelector((store: any) => store.name.text)
   const personName = useSelector((idNumber: any) => idNumber.name.personName)
   const deleteP = useSelector((del: any) => del.name.delete)
 
+  function handleSubmit() {
+    dispatch(SubmitedFunc(true))
+  }
 
   function deleteFunction() {
     dispatch(deleteFunc(true))
@@ -28,7 +33,7 @@ function PushedReplay() {
   }
 
   return (
-    <CommentSectionWrapper style={{ marginTop: "16px", justifyContent: "space-between", paddingTop: "16px" }} >
+    <CommentSectionWrapper  style={{ marginTop: "16px", justifyContent: "space-between", paddingTop: "16px" }} >
       <NameImgWrapper>
         <img style={{ width: "32px", height: "32px" }} src={Data.comments[1].replies[1].user.image.png} alt="girl avatar" />
         <Name>{Data.comments[1].replies[1].user.username}</Name>
@@ -43,7 +48,11 @@ function PushedReplay() {
         </Counter>
         <EditWrapper >
           <EditImage src={Delete} alt="edition icon" />
-          <Edit onClick={deleteFunction} style={{ color: "rgba(237, 99, 104, 1)" }} >Delete</Edit>
+          <Edit onClick={() => {
+            deleteFunction();
+            handleSubmit()
+            window.scrollTo(0, 0)
+          }} style={{ color: "rgba(237, 99, 104, 1)" }} >Delete</Edit>
           <EditImage src={edit} alt="edition icon" />
           <Edit onClick={EditTextfoo} >Edit</Edit>
         </EditWrapper>
