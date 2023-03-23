@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import minus from "/src/assets/icon-plus.svg";
-import plus from "/src/assets/icon-minus.svg";
-import reply from "/src/assets/icon-reply.svg";
+import minus from "/assets/icon-plus.svg";
+import plus from "/assets/icon-minus.svg";
+import reply from "/assets/icon-reply.svg";
 import Data from "../../data.json";
 import { useSelector } from "react-redux";
 import PushedReplay from "./PushedReplay";
@@ -16,8 +16,8 @@ function Replays() {
   function changeValue() {
     if (deleteP === false) {
       dispatch(updateFunction(true)),
-      dispatch(textUpdate("")),
-      dispatch(updatePersonName(Data.comments[1].replies[0].user.username))
+        dispatch(textUpdate("")),
+        dispatch(updatePersonName(Data.comments[1].replies[0].user.username))
     }
   }
 

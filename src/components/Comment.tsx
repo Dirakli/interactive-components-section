@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import minus from "/src/assets/icon-plus.svg"
-import plus from "/src/assets/icon-minus.svg"
-import reply from "/src/assets/icon-reply.svg"
+import minus from "/assets/icon-plus.svg"
+import plus from "/assets/icon-minus.svg"
+import reply from "/assets/icon-reply.svg"
 import Data from "../../data.json"
 import { useDispatch, useSelector } from "react-redux";
 import { updateFunction, updatePersonName, textUpdate } from "../store/handleChange";
@@ -29,7 +29,7 @@ function Comment() {
               <CommentedDuration>{items.createdAt}</CommentedDuration>
             </NameImgWrapper>
             <Text>{items.content}</Text>
-            <CounterReplayWrapper style={{width: "100%"}}>
+            <CounterReplayWrapper style={{ width: "100%" }}>
               <Counter>
                 <img src={plus} alt="plus icon" />
                 <Number>{items.score}</Number>

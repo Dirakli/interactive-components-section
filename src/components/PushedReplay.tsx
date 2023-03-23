@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import Data from "../../data.json";
-import edit from "/src/assets/icon-edit.svg";
-import Delete from "/src/assets/icon-delete.svg";
-import minus from "/src/assets/icon-plus.svg";
-import plus from "/src/assets/icon-minus.svg";
+import edit from "/assets/icon-edit.svg";
+import Delete from "/assets/icon-delete.svg";
+import minus from "/assets/icon-plus.svg";
+import plus from "/assets/icon-minus.svg";
 import { useDispatch } from "react-redux";
 import { textUpdate, newTextFunction, deleteFunc } from "../store/handleChange";
 import { useSelector } from "react-redux";
